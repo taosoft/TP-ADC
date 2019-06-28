@@ -49,7 +49,7 @@ if __name__ == '__main__':
         (arrayOfProcesses[i][3])[3] = False
         cantProcess += 1
       
-      if contador == 4000000:
+      if contador == 40000:
         if (arrayOfProcesses[i][3])[5] == True:
           cantFinalizados += 1
         contadorInterno += 1
@@ -60,6 +60,8 @@ if __name__ == '__main__':
 
       if (arrayOfProcesses[i][3])[1] == True:
         stopVar2 = True
+        if processesQuantity == 1:
+          stopVar = True
         (arrayOfProcesses[i][3])[1] = False
         printCollision((arrayOfProcesses[i][3])[2], letras_bytes, i + 1)
 
@@ -75,12 +77,12 @@ if __name__ == '__main__':
       if stopVar2 :
         stopVar = True
 
+  # Tiempo total de trabajo
+  d = tickTotal()
+
   # Carga el valor de referencia para terminar el proceso (en la memoria compartida)
   for i in range(processesQuantity):
     (arrayOfProcesses[i][3])[4] = True
-
-  # Tiempo total de trabajo
-  d = tickTotal()
 
   # Espera que finalicen los procesos creados
   for i in range(processesQuantity):
